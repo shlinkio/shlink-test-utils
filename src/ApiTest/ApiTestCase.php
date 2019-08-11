@@ -10,7 +10,7 @@ use GuzzleHttp\RequestOptions;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
-use function Shlinkio\Shlink\Common\json_decode;
+use function json_decode;
 use function sprintf;
 
 abstract class ApiTestCase extends TestCase implements StatusCodeInterface, RequestMethodInterface
@@ -55,7 +55,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 
     protected function getJsonResponsePayload(ResponseInterface $resp): array
     {
-        return json_decode((string) $resp->getBody());
+        return json_decode((string) $resp->getBody(), true);
     }
 
     protected function callShortUrl(string $shortCode): ResponseInterface
