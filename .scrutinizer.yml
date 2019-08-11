@@ -1,8 +1,6 @@
-tools:
-  external_code_coverage: true
 checks:
   php:
-    code_rating: true
+    code_rating: false
     duplication: true
 build:
   nodes:

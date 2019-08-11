@@ -15,7 +15,7 @@ Install this tool using [composer](https://getcomposer.org/).
 
     composer require shlinkio/shlink-test-utils --dev
 
-## Base test classes:
+## Base test classes
 
 * `ApiTestCase` for API e2e tests.
 * `DbTestCase` for database integration tests.
