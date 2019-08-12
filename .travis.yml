@@ -23,7 +23,3 @@ install:
 script:
   - mkdir build
   - composer ci
-
-after_success:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover build/clover.xml
