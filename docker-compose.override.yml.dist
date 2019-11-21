@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  shlink_installer_php:
+  shlink_test_utils_php:
     user: 1000:1000
     volumes:
       - /etc/passwd:/etc/passwd:ro
