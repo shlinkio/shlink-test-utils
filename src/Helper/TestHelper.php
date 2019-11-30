@@ -15,12 +15,10 @@ class TestHelper
     public function createTestDb(): void
     {
         $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:drop', '--force', '--no-interaction', '-q']);
-        $process->inheritEnvironmentVariables()
-                ->mustRun();
+        $process->mustRun();
 
         $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:create', '--no-interaction', '-q']);
-        $process->inheritEnvironmentVariables()
-                ->mustRun();
+        $process->mustRun();
     }
 
     public function seedFixtures(EntityManagerInterface $em, array $config): void
