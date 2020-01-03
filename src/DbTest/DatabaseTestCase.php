@@ -11,8 +11,7 @@ abstract class DatabaseTestCase extends TestCase
 {
     protected const ENTITIES_TO_EMPTY = [];
 
-    /** @var EntityManagerInterface */
-    private static $em;
+    private static EntityManagerInterface $em;
 
     public static function setEntityManager(EntityManagerInterface $em): void
     {

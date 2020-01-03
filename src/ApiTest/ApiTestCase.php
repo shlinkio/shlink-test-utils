@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\TestUtils\ApiTest;
 
+use Closure;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use GuzzleHttp\ClientInterface;
@@ -24,10 +25,8 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 {
     private const REST_PATH_PREFIX = '/rest/v1';
 
-    /** @var ClientInterface */
-    private static $client;
-    /** @var callable|null */
-    private static $seedFixtures;
+    private static ClientInterface $client;
+    private static ?Closure $seedFixtures = null;
 
     public static function setApiClient(ClientInterface $client): void
     {
@@ -36,7 +35,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 
     public static function setSeedFixturesCallback(callable $seedFixtures): void
     {
-        self::$seedFixtures = $seedFixtures;
+        self::$seedFixtures = Closure::fromCallable($seedFixtures);
     }
 
     public function setUp(): void
