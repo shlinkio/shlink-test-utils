@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## 1.3.0 - 2020-01-03
 
 #### Added
 
@@ -12,7 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 #### Changed
 
-* *Nothing*
+* [#6](https://github.com/shlinkio/shlink-test-utils/issues/6) API tests will now perform API requests to v2 endpoints.
+* [#8](https://github.com/shlinkio/shlink-test-utils/issues/8) Updated coding-standard (v2.1) and phpstan (v0.12) dependencies.
 
 #### Deprecated
 
@@ -20,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 #### Removed
 
-* [#6](https://github.com/shlinkio/shlink-test-utils/issues/6) Dropped support for PHP 7.2 and 7.3
+* [#7](https://github.com/shlinkio/shlink-test-utils/issues/7) Dropped support for PHP 7.2 and 7.3
 
 #### Fixed
 
