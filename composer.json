@@ -12,12 +12,12 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.4",
         "ext-json": "*",
         "doctrine/data-fixtures": "^1.4",
         "doctrine/orm": "^2.7",
         "fig/http-message-util": "^1.1",
-        "guzzlehttp/guzzle": "^6.4",
+        "guzzlehttp/guzzle": "^6.5.1",
         "phpunit/phpunit": "^8.3",
         "symfony/process": "^5.0"
     },
@@ -36,7 +36,6 @@
             "@cs",
             "@stan"
         ],
-
         "cs": "phpcs",
         "cs:fix": "phpcbf",
         "stan": "phpstan analyse src --level=6"
