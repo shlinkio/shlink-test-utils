@@ -23,7 +23,7 @@ use const PHP_EOL;
 
 abstract class ApiTestCase extends TestCase implements StatusCodeInterface, RequestMethodInterface
 {
-    private const REST_PATH_PREFIX = '/rest/v1';
+    private const REST_PATH_PREFIX = '/rest/v2';
 
     private static ClientInterface $client;
     private static ?Closure $seedFixtures = null;
@@ -68,7 +68,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
                 'It was not possible to parse body to json. Error: "%s". Provided body: %s%s',
                 json_last_error_msg(),
                 PHP_EOL,
-                $body
+                $body,
             ));
         }
 
