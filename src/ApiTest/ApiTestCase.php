@@ -11,15 +11,11 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use Shlinkio\Shlink\TestUtils\Exception\JsonParsingException;
 
 use function json_decode;
-use function json_last_error;
-use function json_last_error_msg;
 use function sprintf;
 
-use const JSON_ERROR_NONE;
-use const PHP_EOL;
+use const JSON_THROW_ON_ERROR;
 
 abstract class ApiTestCase extends TestCase implements StatusCodeInterface, RequestMethodInterface
 {
@@ -62,17 +58,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
     protected function getJsonResponsePayload(ResponseInterface $resp): array
     {
         $body = (string) $resp->getBody();
-        $json = json_decode($body, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new JsonParsingException(sprintf(
-                'It was not possible to parse body to json. Error: "%s". Provided body: %s%s',
-                json_last_error_msg(),
-                PHP_EOL,
-                $body,
-            ));
-        }
-
-        return $json;
+        return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
     }
 
     protected function callShortUrl(string $shortCode): ResponseInterface
