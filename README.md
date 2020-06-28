@@ -3,9 +3,9 @@
 Helpers and utilities to run different types of tests in Shlink.
 
 [![Build Status](https://img.shields.io/travis/shlinkio/shlink-test-utils.svg?style=flat-square)](https://travis-ci.org/shlinkio/shlink-test-utils)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/shlinkio/shlink-test-utils.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-test-utils/?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/shlinkio/shlink-test-utils.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-test-utils/)
 [![Latest Stable Version](https://img.shields.io/github/release/shlinkio/shlink-test-utils.svg?style=flat-square)](https://packagist.org/packages/shlinkio/shlink-test-utils)
-[![License](https://img.shields.io/github/license/shlinkio/shlink-test-utils.svg?style=flat-square)](https://github.com/shlinkio/shlink-test-utils/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/shlinkio/shlink-test-utils.svg?style=flat-square)](https://github.com/shlinkio/shlink-test-utils/blob/main/LICENSE)
 [![Paypal donate](https://img.shields.io/badge/Donate-paypal-blue.svg?style=flat-square&logo=paypal&colorA=aaaaaa)](https://slnk.to/donate)
 
 ## Installation
