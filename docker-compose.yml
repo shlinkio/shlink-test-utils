@@ -3,7 +3,7 @@ version: '3'
 services:
   shlink_test_utils_php:
     container_name: shlink_test_utils_php
-    image: prooph/composer:7.4
+    image: composer:1.10
     entrypoint: ["/bin/sh", "-c"]
     volumes:
       - ./:/app
