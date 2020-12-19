@@ -21,7 +21,10 @@ jobs:
           php-version: ${{ matrix.php-version }}
           tools: composer
           coverage: none
-      - run: composer install --no-interaction --prefer-dist
+      - if: ${{ matrix.php-version == '8.0' }}
+        run: composer install --no-interaction --prefer-dist --ignore-platform-req=php
+      - if: ${{ matrix.php-version != '8.0' }}
+        run: composer install --no-interaction --prefer-dist
       - run: composer cs
 
   static-analysis:
@@ -38,5 +41,8 @@ jobs:
           php-version: ${{ matrix.php-version }}
           tools: composer
           coverage: none
-      - run: composer install --no-interaction --prefer-dist
+      - if: ${{ matrix.php-version == '8.0' }}
+        run: composer install --no-interaction --prefer-dist --ignore-platform-req=php
+      - if: ${{ matrix.php-version != '8.0' }}
+        run: composer install --no-interaction --prefer-dist
       - run: composer stan
