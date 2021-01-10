@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.7.0] - 2021-01-10
 ### Added
-* *Nothing*
+* Update `ApiTestCase` so that it allows providing the API key value when calling `callApiWithKey`.
 
 ### Changed
 * Migrated build to Github Actions.

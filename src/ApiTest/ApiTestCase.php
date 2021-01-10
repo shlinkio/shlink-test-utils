@@ -46,10 +46,14 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
         return self::$client->request($method, sprintf('%s%s', self::REST_PATH_PREFIX, $uri), $options);
     }
 
-    protected function callApiWithKey(string $method, string $uri, array $options = []): ResponseInterface
-    {
+    protected function callApiWithKey(
+        string $method,
+        string $uri,
+        array $options = [],
+        string $apiKey = 'valid_api_key'
+    ): ResponseInterface {
         $headers = $options[RequestOptions::HEADERS] ?? [];
-        $headers['X-Api-Key'] = 'valid_api_key';
+        $headers['X-Api-Key'] = $apiKey;
         $options[RequestOptions::HEADERS] = $headers;
 
         return $this->callApi($method, $uri, $options);
