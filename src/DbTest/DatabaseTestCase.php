@@ -9,8 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 abstract class DatabaseTestCase extends TestCase
 {
-    protected const ENTITIES_TO_EMPTY = [];
-
     private static EntityManagerInterface $em;
 
     public static function setEntityManager(EntityManagerInterface $em): void
@@ -23,14 +21,24 @@ abstract class DatabaseTestCase extends TestCase
         return self::$em;
     }
 
-    public function tearDown(): void
+    final protected function setUp(): void
     {
-        foreach (static::ENTITIES_TO_EMPTY as $entityClass) {
-            $qb = $this->getEntityManager()->createQueryBuilder();
-            $qb->delete($entityClass, 'x');
-            $qb->getQuery()->execute();
-        }
+        $this->getEntityManager()->beginTransaction();
+        $this->beforeEach();
+    }
 
+    final public function tearDown(): void
+    {
+        $this->afterEach();
+        $this->getEntityManager()->rollback();
         $this->getEntityManager()->clear();
+    }
+
+    protected function beforeEach(): void
+    {
+    }
+
+    protected function afterEach(): void
+    {
     }
 }
