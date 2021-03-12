@@ -17,7 +17,15 @@ class TestHelper
         $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:drop', '--force', '--no-interaction', '-q']);
         $process->mustRun();
 
+        $process = new Process(
+            ['vendor/bin/doctrine', 'dbal:run-sql', 'DROP TABLE migrations', '--no-interaction', '-q'],
+        );
+        $process->run(); // The table may not exist, so let's not enforce the successful run
+
         $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:create', '--no-interaction', '-q']);
+        $process->mustRun();
+
+        $process = new Process(['vendor/bin/doctrine-migrations', 'migrations:migrate', '--no-interaction', '-q']);
         $process->mustRun();
     }
 
