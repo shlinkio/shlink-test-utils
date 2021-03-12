@@ -14,12 +14,12 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
-        "doctrine/data-fixtures": "^1.4",
-        "doctrine/orm": "^2.7",
+        "doctrine/data-fixtures": "^1.5",
+        "doctrine/orm": "^2.8",
         "fig/http-message-util": "^1.1",
-        "guzzlehttp/guzzle": "^7.0 || ^6.5.1",
-        "phpunit/phpunit": "^9.4",
-        "symfony/process": "^5.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "phpunit/phpunit": "^9.5",
+        "symfony/process": "^5.2"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.52",
