@@ -11,6 +11,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
 
 use function json_decode;
 use function sprintf;
@@ -21,7 +22,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 {
     private const REST_PATH_PREFIX = '/rest/v2';
 
-    private static ClientInterface $client;
+    private static ?ClientInterface $client = null;
     private static ?Closure $seedFixtures = null;
 
     public static function setApiClient(ClientInterface $client): void
@@ -29,6 +30,9 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
         self::$client = $client;
     }
 
+    /**
+     * @param callable(): void $seedFixtures
+     */
     public static function setSeedFixturesCallback(callable $seedFixtures): void
     {
         self::$seedFixtures = Closure::fromCallable($seedFixtures);
@@ -43,7 +47,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 
     protected function callApi(string $method, string $uri, array $options = []): ResponseInterface
     {
-        return self::$client->request($method, sprintf('%s%s', self::REST_PATH_PREFIX, $uri), $options);
+        return self::getClient()->request($method, sprintf('%s%s', self::REST_PATH_PREFIX, $uri), $options);
     }
 
     protected function callApiWithKey(
@@ -67,8 +71,17 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
 
     protected function callShortUrl(string $shortCode): ResponseInterface
     {
-        return self::$client->request(self::METHOD_GET, sprintf('/%s', $shortCode), [
+        return self::getClient()->request(self::METHOD_GET, sprintf('/%s', $shortCode), [
             RequestOptions::ALLOW_REDIRECTS => false,
         ]);
+    }
+
+    private static function getClient(): ClientInterface
+    {
+        if (self::$client === null) {
+            throw MissingDependencyException::forApiClient();
+        }
+
+        return self::$client;
     }
 }
