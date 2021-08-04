@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+### Added
+* *Nothing*
+
+### Changed
+* Added experimental builds under PHP 8.1
+* Increased required phpstan level to 8
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Dropped support for PHP 7.4
+
+### Fixed
+* *Nothing*
+
+
 ## [2.1.0] - 2021-03-12
 ### Added
 * Improved `TestHelper::createTestDb` method, so that it tries to run the migrations too, which helps spot issues on them.
