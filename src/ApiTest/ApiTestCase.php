@@ -54,7 +54,7 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
         string $method,
         string $uri,
         array $options = [],
-        string $apiKey = 'valid_api_key'
+        string $apiKey = 'valid_api_key',
     ): ResponseInterface {
         $headers = $options[RequestOptions::HEADERS] ?? [];
         $headers['X-Api-Key'] = $apiKey;
