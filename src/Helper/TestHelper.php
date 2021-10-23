@@ -12,20 +12,20 @@ use Symfony\Component\Process\Process;
 
 class TestHelper
 {
-    public function createTestDb(): void
-    {
-        $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:drop', '--force', '--no-interaction', '-q']);
+    public function createTestDb(
+        array $createDbCommand = ['vendor/bin/doctrine', 'orm:schema-tool:create'],
+        array $migrateDbCommand = ['vendor/bin/doctrine-migrations', 'migrations:migrate'],
+    ): void {
+        $process = new Process($this->withFlags(['vendor/bin/doctrine', 'orm:schema-tool:drop', '--force']));
         $process->mustRun();
 
-        $process = new Process(
-            ['vendor/bin/doctrine', 'dbal:run-sql', 'DROP TABLE migrations', '--no-interaction', '-q'],
-        );
+        $process = new Process($this->withFlags(['vendor/bin/doctrine', 'dbal:run-sql', 'DROP TABLE migrations']));
         $process->run(); // The table may not exist, so let's not enforce the successful run
 
-        $process = new Process(['vendor/bin/doctrine', 'orm:schema-tool:create', '--no-interaction', '-q']);
+        $process = new Process($this->withFlags($createDbCommand));
         $process->mustRun();
 
-        $process = new Process(['vendor/bin/doctrine-migrations', 'migrations:migrate', '--no-interaction', '-q']);
+        $process = new Process($this->withFlags($migrateDbCommand));
         $process->mustRun();
     }
 
@@ -43,5 +43,10 @@ class TestHelper
 
         $executor = new ORMExecutor($em, new ORMPurger());
         $executor->execute($loader->getFixtures());
+    }
+
+    private function withFlags(array $command): array
+    {
+        return [...$command, '--no-interaction', '-q'];
     }
 }
