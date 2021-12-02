@@ -4,12 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [2.4.0] - 2021-12-02
 ### Added
-* *Nothing*
+* Added support for symfony/process 6.0
+* Added support for PHP 8.1
 
 ### Changed
-* Updated to phpstan 1.0
+* Updated to phpstan 1.2
 
 ### Deprecated
 * *Nothing*
