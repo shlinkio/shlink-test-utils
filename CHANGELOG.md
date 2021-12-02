@@ -4,13 +4,30 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [2.3.0] - 2021-12-02
+## [2.4.0] - 2021-12-02
 ### Added
 * Added support for symfony/process 6.0
 * Added support for PHP 8.1
 
 ### Changed
-* Updated PHPStan to v1.0
+* Updated to phpstan 1.2
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
+## [2.3.0] - 2021-10-23
+### Added
+* Allowed to customize the commands to run when invoking `TestHelper::createTestDb`.
+
+### Changed
+* *Nothing*
 
 ### Deprecated
 * *Nothing*
