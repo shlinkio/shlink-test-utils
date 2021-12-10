@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.5.0] - 2021-12-10
+### Added
+* Added `X-Coverage-Id` header that is sent on every request to Shlink with the FQCN of the tests.
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [2.4.0] - 2021-12-02
 ### Added
 * Added support for symfony/process 6.0
