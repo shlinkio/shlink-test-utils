@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.0.0]
+### Added
+* [#5](https://github.com/shlinkio/shlink-test-utils/issues/5) Added new `CliTestCase` with helper functions to E2E test Shlink from the CLI.
+
+### Changed
+* Explicitly added trusted plugins to composer.json
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Dropped support for Symfony 5
+
+### Fixed
+* *Nothing*
+
+
 ## [2.5.0] - 2021-12-10
 ### Added
 * Added `X-Coverage-Id` header that is sent on every request to Shlink with the FQCN of the tests.

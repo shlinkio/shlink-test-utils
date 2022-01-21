@@ -17,7 +17,7 @@ abstract class DatabaseTestCase extends TestCase
         self::$em = $em;
     }
 
-    protected function getEntityManager(): EntityManagerInterface
+    final protected function getEntityManager(): EntityManagerInterface
     {
         if (self::$em === null) {
             throw MissingDependencyException::forEntityManager();
@@ -26,24 +26,16 @@ abstract class DatabaseTestCase extends TestCase
         return self::$em;
     }
 
-    final protected function setUp(): void
+    /** @before */
+    final public function beginTransaction(): void
     {
         $this->getEntityManager()->beginTransaction();
-        $this->beforeEach();
     }
 
-    final public function tearDown(): void
+    /** @after */
+    final public function rollback(): void
     {
-        $this->afterEach();
         $this->getEntityManager()->rollback();
         $this->getEntityManager()->clear();
-    }
-
-    protected function beforeEach(): void
-    {
-    }
-
-    protected function afterEach(): void
-    {
     }
 }
