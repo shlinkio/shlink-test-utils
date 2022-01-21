@@ -38,7 +38,8 @@ abstract class ApiTestCase extends TestCase implements StatusCodeInterface, Requ
         self::$seedFixtures = Closure::fromCallable($seedFixtures);
     }
 
-    public function setUp(): void
+    /** @before */
+    final public function seedFixturesIfProvided(): void
     {
         if (self::$seedFixtures !== null) {
             (self::$seedFixtures)();
