@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 ## [3.0.0]
 ### Added
-* *Nothing*
+* [#5](https://github.com/shlinkio/shlink-test-utils/issues/5) Added new `CliTestCase` with helper functions to E2E test Shlink from the CLI.
 
 ### Changed
 * Explicitly added trusted plugins to composer.json
