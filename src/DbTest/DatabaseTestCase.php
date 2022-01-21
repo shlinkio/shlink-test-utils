@@ -17,7 +17,7 @@ abstract class DatabaseTestCase extends TestCase
         self::$em = $em;
     }
 
-    protected function getEntityManager(): EntityManagerInterface
+    final protected function getEntityManager(): EntityManagerInterface
     {
         if (self::$em === null) {
             throw MissingDependencyException::forEntityManager();
