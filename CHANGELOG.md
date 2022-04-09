@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.0.1] - 2022-04-09
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Fixed database deletion being run as mandatory, while it might not exist
+
+
 ## [3.0.0] - 2022-01-21
 ### Added
 * [#5](https://github.com/shlinkio/shlink-test-utils/issues/5) Added new `CliTestCase` with helper functions to E2E test Shlink from the CLI.
