@@ -8,10 +8,10 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        php-version: ['8.0', '8.1']
+        php-version: ['8.1']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -25,10 +25,10 @@ jobs:
       - run: composer cs
 
   static-analysis:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        php-version: ['8.0', '8.1']
+        php-version: ['8.1']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
