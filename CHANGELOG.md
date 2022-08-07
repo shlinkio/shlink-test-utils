@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.1.0] - 2022-08-07
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Dropped support for PHP 8.0
+
+### Fixed
+* *Nothing*
+
+
 ## [3.0.1] - 2022-04-09
 ### Added
 * *Nothing*
