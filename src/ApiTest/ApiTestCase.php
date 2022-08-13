@@ -14,6 +14,7 @@ use Shlinkio\Shlink\TestUtils\Helper\SeededTestCase;
 
 use function json_decode;
 use function sprintf;
+use function str_starts_with;
 
 use const JSON_THROW_ON_ERROR;
 
@@ -30,8 +31,9 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 
     final protected function callApi(string $method, string $uri, array $options = []): ResponseInterface
     {
+        $uri = str_starts_with($uri, '/rest') ? $uri : sprintf('%s%s', self::REST_PATH_PREFIX, $uri);
         $options = $this->optionsWithHeader($options, 'X-Coverage-Id', static::class);
-        return self::getClient()->request($method, sprintf('%s%s', self::REST_PATH_PREFIX, $uri), $options);
+        return self::getClient()->request($method, $uri, $options);
     }
 
     final protected function callApiWithKey(
