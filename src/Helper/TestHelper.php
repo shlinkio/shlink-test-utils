@@ -15,12 +15,14 @@ class TestHelper
     public function createTestDb(
         array $createDbCommand = ['vendor/bin/doctrine', 'orm:schema-tool:create'],
         array $migrateDbCommand = ['vendor/bin/doctrine-migrations', 'migrations:migrate'],
+        array $dropSchemaCommand = ['vendor/bin/doctrine', 'orm:schema-tool:drop'],
+        array $runSqlCommand = ['vendor/bin/doctrine', 'dbal:run-sql'],
     ): void {
-        $process = new Process($this->withFlags(['vendor/bin/doctrine', 'orm:schema-tool:drop', '--force']));
+        $process = new Process($this->withFlags([...$dropSchemaCommand, '--force']));
         $process->run();// The database may not exist, so let's not enforce a successful run
 
         // The migrations table is not part of Shlink's schema, so we need to drop it separately
-        $process = new Process($this->withFlags(['vendor/bin/doctrine', 'dbal:run-sql', 'DROP TABLE migrations']));
+        $process = new Process($this->withFlags([...$runSqlCommand, 'DROP TABLE migrations']));
         $process->run(); // The migrations table may not exist, so let's not enforce a successful run
 
         $process = new Process($this->withFlags($createDbCommand));
