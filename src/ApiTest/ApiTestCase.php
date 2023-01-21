@@ -52,10 +52,13 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
         return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
     }
 
-    final protected function callShortUrl(string $shortCode): ResponseInterface
+    final protected function callShortUrl(string $shortCode, ?string $userAgent = null): ResponseInterface
     {
         return self::getClient()->request(self::METHOD_GET, sprintf('/%s', $shortCode), [
             RequestOptions::ALLOW_REDIRECTS => false,
+            RequestOptions::HEADERS => [
+                'User-Agent' => $userAgent,
+            ],
         ]);
     }
 

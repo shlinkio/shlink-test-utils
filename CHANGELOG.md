@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.4.0] - 2023-01-21
+### Added
+* Allowed User Agent to be provided to `ApiTestCase::callShortUrl`.
+
+### Changed
+* Updated dependencies
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [3.3.0] - 2022-09-18
 ### Added
 * Allowed to overwrite db commands for drop schema and run SQL on the TestHelper.
