@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Shlinkio\Shlink\TestUtils\DbTest;
 
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\After;
+use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
 
@@ -26,13 +28,13 @@ abstract class DatabaseTestCase extends TestCase
         return self::$em;
     }
 
-    /** @before */
+    #[Before]
     final public function beginTransaction(): void
     {
         $this->getEntityManager()->beginTransaction();
     }
 
-    /** @after */
+    #[After]
     final public function rollback(): void
     {
         $this->getEntityManager()->rollback();
