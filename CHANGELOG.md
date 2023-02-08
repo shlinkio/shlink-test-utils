@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.5.0] - 2023-02-08
+### Added
+* *Nothing*
+
+### Changed
+* Updated to PHPUnit 10
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [3.4.0] - 2023-01-21
 ### Added
 * Allowed User Agent to be provided to `ApiTestCase::callShortUrl`.

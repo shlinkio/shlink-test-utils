@@ -7,31 +7,15 @@ on:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        php-version: ['8.1', '8.2']
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Use PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          tools: composer
-          coverage: none
-      - run: composer install --no-interaction --prefer-dist
-      - run: composer cs
-
   static-analysis:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
         php-version: ['8.1', '8.2']
+        tool: ['cs', 'stan']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -39,4 +23,4 @@ jobs:
           tools: composer
           coverage: none
       - run: composer install --no-interaction --prefer-dist
-      - run: composer stan
+      - run: composer ${{ matrix.tool }}
