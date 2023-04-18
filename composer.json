@@ -13,12 +13,12 @@
     ],
     "require": {
         "php": "^8.1",
-        "ext-json": "*",
         "doctrine/data-fixtures": "^1.5",
         "doctrine/orm": "^2.14",
         "fig/http-message-util": "^1.1",
         "guzzlehttp/guzzle": "^7.5",
         "phpunit/phpunit": "^10.0",
+        "shlinkio/shlink-json": "^1.0",
         "symfony/process": "^6.2"
     },
     "require-dev": {

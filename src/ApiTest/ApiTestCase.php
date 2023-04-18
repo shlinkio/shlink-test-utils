@@ -12,11 +12,9 @@ use Psr\Http\Message\ResponseInterface;
 use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
 use Shlinkio\Shlink\TestUtils\Helper\SeededTestCase;
 
-use function json_decode;
+use function Shlinkio\Shlink\Json\json_decode;
 use function sprintf;
 use function str_starts_with;
-
-use const JSON_THROW_ON_ERROR;
 
 abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface, RequestMethodInterface
 {
@@ -49,7 +47,7 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
     final protected function getJsonResponsePayload(ResponseInterface $resp): array
     {
         $body = (string) $resp->getBody();
-        return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+        return json_decode($body);
     }
 
     final protected function callShortUrl(string $shortCode, ?string $userAgent = null): ResponseInterface
