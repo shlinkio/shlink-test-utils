@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.6.0] - 2023-04-18
+### Added
+* *Nothing*
+
+### Changed
+* Add support for `shlinkio/shlink-json`.
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [3.5.0] - 2023-02-08
 ### Added
 * *Nothing*
