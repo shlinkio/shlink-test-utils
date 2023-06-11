@@ -10,6 +10,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
 use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
+use Shlinkio\Shlink\TestUtils\Helper\CoverageHelper;
 use Shlinkio\Shlink\TestUtils\Helper\SeededTestCase;
 
 use function Shlinkio\Shlink\Json\json_decode;
@@ -29,8 +30,10 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 
     final protected function callApi(string $method, string $uri, array $options = []): ResponseInterface
     {
+        $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
         $uri = str_starts_with($uri, '/rest') ? $uri : sprintf('%s%s', self::REST_PATH_PREFIX, $uri);
-        $options = $this->optionsWithHeader($options, 'X-Coverage-Id', static::class);
+        $options = $this->optionsWithHeader($options, 'X-Coverage-Id', $coverageId);
+
         return self::getClient()->request($method, $uri, $options);
     }
 
