@@ -30,11 +30,8 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 
     final protected function callApi(string $method, string $uri, array $options = []): ResponseInterface
     {
-        $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
         $uri = str_starts_with($uri, '/rest') ? $uri : sprintf('%s%s', self::REST_PATH_PREFIX, $uri);
-        $options = $this->optionsWithHeader($options, 'X-Coverage-Id', $coverageId);
-
-        return self::getClient()->request($method, $uri, $options);
+        return $this->requestWithCoverageId($method, $uri, $options);
     }
 
     final protected function callApiWithKey(
@@ -55,12 +52,22 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 
     final protected function callShortUrl(string $shortCode, ?string $userAgent = null): ResponseInterface
     {
-        return self::getClient()->request(self::METHOD_GET, sprintf('/%s', $shortCode), [
+        return $this->requestWithCoverageId(self::METHOD_GET, sprintf('/%s', $shortCode), [
             RequestOptions::ALLOW_REDIRECTS => false,
             RequestOptions::HEADERS => [
                 'User-Agent' => $userAgent,
             ],
         ]);
+    }
+
+    private function requestWithCoverageId(string $method, string $uri, array $options): ResponseInterface
+    {
+        $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
+        return self::getClient()->request(
+            $method,
+            $uri,
+            $this->optionsWithHeader($options, 'X-Coverage-Id', $coverageId),
+        );
     }
 
     private static function getClient(): ClientInterface
