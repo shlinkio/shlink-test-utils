@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.7.1] - 2023-06-18
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Make sure ApiTests send coverage ID for short URL calls
+
+
 ## [3.7.0] - 2023-06-11
 ### Added
 * Improve code coverage resolution for API and CLI tests
