@@ -11,16 +11,17 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        php-version: ['8.1', '8.2']
-        tool: ['cs', 'stan']
+        php-version: ['8.2', '8.3']
+        command: ['cs', 'stan']
+    continue-on-error: ${{ matrix.php-version == '8.3' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer
           coverage: none
-      - run: composer install --no-interaction --prefer-dist
-      - run: composer ${{ matrix.tool }}
+      - run: composer install --no-interaction --prefer-dist ${{ matrix.php-version == '8.3' && '--ignore-platform-req=php' || '' }}
+      - run: composer ${{ matrix.command }}

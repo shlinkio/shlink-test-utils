@@ -12,17 +12,17 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "doctrine/data-fixtures": "^1.5",
-        "doctrine/orm": "^2.14",
+        "php": "^8.2",
+        "doctrine/data-fixtures": "^1.6",
+        "doctrine/orm": "^2.16",
         "fig/http-message-util": "^1.1",
-        "guzzlehttp/guzzle": "^7.5",
-        "phpunit/phpunit": "^10.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "phpunit/phpunit": "^10.4",
         "shlinkio/shlink-json": "^1.0",
         "symfony/process": "^6.3"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan": "^1.10",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.3.0"
     },
