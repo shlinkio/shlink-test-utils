@@ -23,7 +23,7 @@ abstract class CliTestCase extends SeededTestCase
     final protected function exec(array $command, array $inputs = []): array
     {
         $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
-        $process = new Process([self::SHLINK_CLI_ENTRY_POINT, ...$command]);
+        $process = new Process([self::SHLINK_CLI_ENTRY_POINT, ...$command, '--no-ansi']);
         $process->setInput(implode(PHP_EOL, $inputs));
         $process->mustRun(null, ['COVERAGE_ID' => $coverageId]);
 
