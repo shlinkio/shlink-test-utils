@@ -66,7 +66,7 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
         return self::getClient()->request(
             $method,
             $uri,
-            $this->optionsWithHeader($options, 'X-Coverage-Id', $coverageId),
+            $this->optionsWithHeader($options, CoverageMiddleware::COVERAGE_ID_HEADER, $coverageId),
         );
     }
 
