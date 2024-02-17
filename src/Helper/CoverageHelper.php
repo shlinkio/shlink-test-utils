@@ -5,9 +5,18 @@ declare(strict_types=1);
 namespace Shlinkio\Shlink\TestUtils\Helper;
 
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Runner\Version;
 use ReflectionMethod;
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+use SebastianBergmann\CodeCoverage\Driver\Selector;
+use SebastianBergmann\CodeCoverage\Filter;
+use SebastianBergmann\CodeCoverage\Report\Html\Facade as Html;
+use SebastianBergmann\CodeCoverage\Report\PHP;
+use SebastianBergmann\CodeCoverage\Report\Xml\Facade as Xml;
+use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 
 use function debug_backtrace;
+use function file_exists;
 
 class CoverageHelper
 {
@@ -41,5 +50,40 @@ class CoverageHelper
     private static function resolveTestDataSet(string|int $dataName): string
     {
         return ! empty($dataName) ? '#' . $dataName : '';
+    }
+
+    public static function createCoverageForDirectories(array $dirs): CodeCoverage
+    {
+        $filter = new Filter();
+        foreach ($dirs as $dir) {
+            foreach ((new FileIteratorFacade())->getFilesAsArray($dir) as $file) {
+                $filter->includeFile($file);
+            }
+        }
+
+        return new CodeCoverage((new Selector())->forLineCoverage($filter), $filter);
+    }
+
+    public static function exportCoverage(
+        ?CodeCoverage $coverage,
+        string $basePath,
+        bool $pretty = false,
+        bool $mergeWithExisting = false,
+    ): void {
+        if ($coverage === null) {
+            return;
+        }
+
+        $covPath = $basePath . '.cov';
+        if ($mergeWithExisting && file_exists($covPath)) {
+            $coverage->merge(require $covPath);
+        }
+
+        if ($pretty) {
+            (new Html())->process($coverage, $basePath . '/coverage-html');
+        } else {
+            (new PHP())->process($coverage, $covPath);
+            (new Xml(Version::getVersionString()))->process($coverage, $basePath . '/coverage-xml');
+        }
     }
 }
