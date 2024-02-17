@@ -14,7 +14,7 @@
     "require": {
         "php": "^8.2",
         "doctrine/data-fixtures": "^1.6",
-        "doctrine/orm": "^2.17",
+        "doctrine/orm": "^3.0 | ^2.18",
         "fig/http-message-util": "^1.1",
         "guzzlehttp/guzzle": "^7.8",
         "phpunit/php-code-coverage": "^10.1",
