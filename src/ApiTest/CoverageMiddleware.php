@@ -24,6 +24,10 @@ class CoverageMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $coverageId = $request->getHeaderLine(self::COVERAGE_ID_HEADER);
+        if ($coverageId === '') {
+            return $handler->handle($request);
+        }
+
         $this->coverage?->start($coverageId);
         try {
             return $handler->handle($request);
