@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\TestUtils\CliTest;
 
-use Closure;
 use Psr\Container\ContainerInterface;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use Symfony\Component\Console\Application;
@@ -16,7 +15,7 @@ class CliCoverageDelegator
 {
     public const COVERAGE_ID_ENV = 'COVERAGE_ID';
 
-    public function __construct(private readonly Closure $exportCoverage, private readonly ?CodeCoverage $coverage)
+    public function __construct(private readonly ?CodeCoverage $coverage)
     {
     }
 
@@ -26,7 +25,6 @@ class CliCoverageDelegator
         $app = $callback();
         $wrappedEventDispatcher = new EventDispatcher();
         $coverage = $this->coverage;
-        $exportCoverage = $this->exportCoverage;
 
         // When the command starts, start collecting coverage
         $wrappedEventDispatcher->addListener(
@@ -42,11 +40,10 @@ class CliCoverageDelegator
         // When the command ends, stop collecting coverage and export it
         $wrappedEventDispatcher->addListener(
             'console.terminate',
-            static function () use (&$coverage, $exportCoverage): void {
+            static function () use (&$coverage): void {
                 $id = getenv(self::COVERAGE_ID_ENV);
                 if ($id && $coverage !== null) {
                     $coverage->stop();
-                    $exportCoverage('cli');
                 }
             },
         );

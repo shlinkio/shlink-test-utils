@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [4.0.0] - 2024-02-20
+### Added
+* Add support for PHPUnit 11
+
+### Changed
+* Simplify generating code coverage for CLI and API tests
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [3.11.1] - 2024-02-18
 ### Added
 * *Nothing*
