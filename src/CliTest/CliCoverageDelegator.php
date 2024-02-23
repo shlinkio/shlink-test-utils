@@ -23,11 +23,11 @@ class CliCoverageDelegator
     {
         /** @var Application $app */
         $app = $callback();
-        $wrappedEventDispatcher = new EventDispatcher();
+        $eventDispatcher = new EventDispatcher();
         $coverage = $this->coverage;
 
         // When the command starts, start collecting coverage
-        $wrappedEventDispatcher->addListener(
+        $eventDispatcher->addListener(
             'console.command',
             static function () use (&$coverage): void {
                 $id = getenv(self::COVERAGE_ID_ENV);
@@ -37,8 +37,8 @@ class CliCoverageDelegator
             },
         );
 
-        // When the command ends, stop collecting coverage and export it
-        $wrappedEventDispatcher->addListener(
+        // When the command ends, stop collecting coverage
+        $eventDispatcher->addListener(
             'console.terminate',
             static function () use (&$coverage): void {
                 $id = getenv(self::COVERAGE_ID_ENV);
@@ -48,7 +48,7 @@ class CliCoverageDelegator
             },
         );
 
-        $app->setDispatcher($wrappedEventDispatcher);
+        $app->setDispatcher($eventDispatcher);
 
         return $app;
     }

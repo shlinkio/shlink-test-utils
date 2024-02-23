@@ -51,6 +51,7 @@ class CoverageHelper
     }
 
     /**
+     * @param string[] $dirs
      * @param string|null $shutdownExportBasePath - If provided, it will export coverage to this location on shutdown
      */
     public static function createCoverageForDirectories(

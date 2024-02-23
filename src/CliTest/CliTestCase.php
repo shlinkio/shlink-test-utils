@@ -25,7 +25,7 @@ abstract class CliTestCase extends SeededTestCase
         $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
         $process = new Process([self::SHLINK_CLI_ENTRY_POINT, ...$command, '--no-ansi']);
         $process->setInput(implode(PHP_EOL, $inputs));
-        $process->mustRun(null, [CliCoverageDelegator::COVERAGE_ID_ENV => $coverageId]);
+        $process->mustRun(env: [CliCoverageDelegator::COVERAGE_ID_ENV => $coverageId]);
 
         return [$process->getOutput(), $process->getExitCode()];
     }
