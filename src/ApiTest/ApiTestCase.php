@@ -13,6 +13,8 @@ use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
 use Shlinkio\Shlink\TestUtils\Helper\CoverageHelper;
 use Shlinkio\Shlink\TestUtils\Helper\SeededTestCase;
 
+use function is_array;
+use function is_string;
 use function Shlinkio\Shlink\Json\json_decode;
 use function sprintf;
 use function str_starts_with;
@@ -50,14 +52,21 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
         return json_decode($body);
     }
 
-    final protected function callShortUrl(string $shortCode, ?string $userAgent = null): ResponseInterface
+    /**
+     * @param $userAgent - Calling this param with string is deprecated
+     * @todo Rename $userAgent to $options
+     */
+    final protected function callShortUrl(string $shortCode, string|array|null $userAgent = null): ResponseInterface
     {
-        return $this->requestWithCoverageId(self::METHOD_GET, sprintf('/%s', $shortCode), [
-            RequestOptions::ALLOW_REDIRECTS => false,
-            RequestOptions::HEADERS => [
+        $options = is_array($userAgent) ? $userAgent : [];
+        $options[RequestOptions::ALLOW_REDIRECTS] = false;
+        if (is_string($userAgent)) {
+            $options[RequestOptions::HEADERS] = [
                 'User-Agent' => $userAgent,
-            ],
-        ]);
+            ];
+        }
+
+        return $this->requestWithCoverageId(self::METHOD_GET, sprintf('/%s', $shortCode), $options);
     }
 
     private function requestWithCoverageId(string $method, string $uri, array $options): ResponseInterface
