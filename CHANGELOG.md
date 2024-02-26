@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [4.1.0] - 2024-02-26
+### Added
+* Support providing request options when calling `ApiTestCase::callShortUrl`
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [4.0.0] - 2024-02-20
 ### Added
 * Add support for PHPUnit 11
