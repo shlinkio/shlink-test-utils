@@ -11,9 +11,8 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        php-version: ['8.2', '8.3']
+        php-version: ['8.2', '8.3', '8.4']
         command: ['cs', 'stan']
-    continue-on-error: ${{ matrix.php-version == '8.3' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
