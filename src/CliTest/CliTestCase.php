@@ -8,6 +8,7 @@ use Shlinkio\Shlink\TestUtils\Helper\CoverageHelper;
 use Shlinkio\Shlink\TestUtils\Helper\SeededTestCase;
 use Symfony\Component\Process\Process;
 
+use function getenv;
 use function implode;
 
 use const PHP_EOL;
@@ -25,7 +26,10 @@ abstract class CliTestCase extends SeededTestCase
         $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
         $process = new Process([self::SHLINK_CLI_ENTRY_POINT, ...$command, '--no-ansi']);
         $process->setInput(implode(PHP_EOL, $inputs));
-        $process->mustRun(env: [CliCoverageDelegator::COVERAGE_ID_ENV => $coverageId]);
+        $process->mustRun(env: [
+            ...getenv(), // Inherit env vars from current process
+            CliCoverageDelegator::COVERAGE_ID_ENV => $coverageId,
+        ]);
 
         return [$process->getOutput(), $process->getExitCode()];
     }
