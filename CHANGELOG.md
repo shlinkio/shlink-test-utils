@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [4.1.1] - 2024-10-23
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Make sure child processes run for CLI tests inherit parent process env vars
+
+
 ## [4.1.0] - 2024-02-26
 ### Added
 * Support providing request options when calling `ApiTestCase::callShortUrl`
