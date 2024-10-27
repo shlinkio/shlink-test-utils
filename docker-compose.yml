@@ -1,6 +1,7 @@
 services:
   shlink_test_utils_php:
     container_name: shlink_test_utils_php
+    user: 1000:1000
     image: composer:2
     entrypoint: ["/bin/sh", "-c"]
     volumes:
