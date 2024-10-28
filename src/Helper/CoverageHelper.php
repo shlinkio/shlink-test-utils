@@ -56,7 +56,7 @@ class CoverageHelper
      */
     public static function createCoverageForDirectories(
         array $dirs,
-        ?string $shutdownExportBasePath = null,
+        string|null $shutdownExportBasePath = null,
     ): CodeCoverage {
         $filter = new Filter();
         foreach ($dirs as $dir) {

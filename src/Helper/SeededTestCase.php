@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class SeededTestCase extends TestCase
 {
-    private static ?Closure $seedFixtures = null;
+    private static Closure|null $seedFixtures = null;
 
     /**
      * @param callable(): void $seedFixtures
