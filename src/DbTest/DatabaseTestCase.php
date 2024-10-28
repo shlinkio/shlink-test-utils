@@ -12,7 +12,7 @@ use Shlinkio\Shlink\TestUtils\Exception\MissingDependencyException;
 
 abstract class DatabaseTestCase extends TestCase
 {
-    private static ?EntityManagerInterface $em = null;
+    private static EntityManagerInterface|null $em = null;
 
     public static function setEntityManager(EntityManagerInterface $em): void
     {

@@ -23,7 +23,7 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 {
     private const REST_PATH_PREFIX = '/rest/v2';
 
-    private static ?ClientInterface $client = null;
+    private static ClientInterface|null $client = null;
 
     public static function setApiClient(ClientInterface $client): void
     {
