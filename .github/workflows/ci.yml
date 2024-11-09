@@ -22,5 +22,5 @@ jobs:
           php-version: ${{ matrix.php-version }}
           tools: composer
           coverage: none
-      - run: composer install --no-interaction --prefer-dist ${{ matrix.php-version == '8.3' && '--ignore-platform-req=php' || '' }}
+      - run: composer install --no-interaction --prefer-dist
       - run: composer ${{ matrix.command }}
