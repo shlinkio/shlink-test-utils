@@ -4,7 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [4.3.0] - 2025-02-12
+## [4.3.1] - 2025-02-13
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Add support for phpunit/php-code-coverage 12, so that PHPUnit 12 can be installed
+
+
+## [4.3.0] - 2025-02-13
 ### Added
 * Add support for PHPUnit 12
 
