@@ -27,9 +27,9 @@
         "symfony/process": "^8.0"
     },
     "require-dev": {
+        "carthage-software/mago": "^1.28",
         "phpstan/phpstan": "^2.1",
-        "roave/security-advisories": "dev-master",
-        "shlinkio/php-coding-standard": "~2.5.0"
+        "shlinkio/shlink-mago-config": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -41,8 +41,12 @@
             "@cs",
             "@stan"
         ],
-        "cs": "phpcs",
-        "cs:fix": "phpcbf",
+        "lint": "mago lint",
+        "lint:fix": "mago lint --fix",
+        "format": "mago format",
+        "format:check": "mago format --check",
+        "cs": ["@lint", "@format:check"],
+        "cs:fix": ["@lint:fix", "@format"],
         "stan": "phpstan analyse"
     },
     "scripts-descriptions": {

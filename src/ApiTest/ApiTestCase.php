@@ -72,11 +72,12 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
     private function requestWithCoverageId(string $method, string $uri, array $options): ResponseInterface
     {
         $coverageId = CoverageHelper::resolveCoverageId(static::class, $this->dataName());
-        return self::getClient()->request(
-            $method,
-            $uri,
-            $this->optionsWithHeader($options, CoverageMiddleware::COVERAGE_ID_HEADER, $coverageId),
-        );
+        return self::getClient()
+            ->request(
+                $method,
+                $uri,
+                $this->optionsWithHeader($options, CoverageMiddleware::COVERAGE_ID_HEADER, $coverageId),
+            );
     }
 
     private static function getClient(): ClientInterface
