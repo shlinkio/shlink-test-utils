@@ -17,9 +17,7 @@ class CoverageMiddleware implements MiddlewareInterface
 {
     public const COVERAGE_ID_HEADER = 'X-Coverage-Id';
 
-    public function __construct(private readonly CodeCoverage|null $coverage)
-    {
-    }
+    public function __construct(private readonly CodeCoverage|null $coverage) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

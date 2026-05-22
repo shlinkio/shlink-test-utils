@@ -29,7 +29,7 @@ class CoverageHelper
 
         // Get the first class in the stack which is baseClass, then get its first test method
         foreach ($stack as $t) {
-            if (! isset($t['object'], $t['class']) || $t['class'] !== $baseClass) {
+            if (!isset($t['object'], $t['class']) || $t['class'] !== $baseClass) {
                 continue;
             }
 
@@ -47,7 +47,7 @@ class CoverageHelper
 
     private static function resolveTestDataSet(string|int $dataName): string
     {
-        return ! empty($dataName) ? '#' . $dataName : '';
+        return !empty($dataName) ? '#' . $dataName : '';
     }
 
     /**
@@ -60,18 +60,18 @@ class CoverageHelper
     ): CodeCoverage {
         $filter = new Filter();
         foreach ($dirs as $dir) {
-            foreach ((new FileIteratorFacade())->getFilesAsArray($dir) as $file) {
+            foreach (new FileIteratorFacade()->getFilesAsArray($dir) as $file) {
                 $filter->includeFile($file);
             }
         }
 
-        $coverage = new CodeCoverage((new Selector())->forLineCoverage($filter), $filter);
+        $coverage = new CodeCoverage(new Selector()->forLineCoverage($filter), $filter);
 
         if ($shutdownExportBasePath !== null) {
-            register_shutdown_function(function () use ($shutdownExportBasePath, $coverage): void {
+            register_shutdown_function(static function () use ($shutdownExportBasePath, $coverage): void {
                 $id = (string) microtime(as_float: true);
                 $covPath = $shutdownExportBasePath . '/' . $id . '.cov';
-                (new PHP())->process($coverage, $covPath);
+                new PHP()->process($coverage, $covPath);
             });
         }
 

@@ -15,9 +15,7 @@ class CliCoverageDelegator
 {
     public const COVERAGE_ID_ENV = 'COVERAGE_ID';
 
-    public function __construct(private readonly CodeCoverage|null $coverage)
-    {
-    }
+    public function __construct(private readonly CodeCoverage|null $coverage) {}
 
     public function __invoke(ContainerInterface $c, string $serviceName, callable $callback): Application
     {

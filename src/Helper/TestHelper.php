@@ -19,7 +19,7 @@ class TestHelper
         array $runSqlCommand = ['vendor/bin/doctrine', 'dbal:run-sql'],
     ): void {
         $process = new Process($this->withFlags([...$dropSchemaCommand, '--force']));
-        $process->run();// The database may not exist, so let's not enforce a successful run
+        $process->run(); // The database may not exist, so let's not enforce a successful run
 
         // The migrations table is not part of Shlink's schema, so we need to drop it separately
         $process = new Process($this->withFlags([...$runSqlCommand, 'DROP TABLE migrations']));
