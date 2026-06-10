@@ -14,12 +14,12 @@
     "require": {
         "php": "^8.4",
         "doctrine/data-fixtures": "^1.8",
-        "doctrine/orm": "^3.5",
+        "doctrine/orm": "^3.6",
         "fig/http-message-util": "^1.1",
-        "guzzlehttp/guzzle": "^7.9",
-        "phpunit/php-code-coverage": "^13.0 || ^12.3",
-        "phpunit/phpunit": "^13.0 || ^12.4",
-        "psr/container": "^2.0 || ^1.0",
+        "guzzlehttp/guzzle": "^7.11",
+        "phpunit/php-code-coverage": "^14.0",
+        "phpunit/phpunit": "^13.2",
+        "psr/container": "^2.0",
         "psr/http-server-middleware": "^1.0",
         "shlinkio/shlink-json": "^1.2",
         "symfony/console": "^8.0",
@@ -27,8 +27,8 @@
         "symfony/process": "^8.0"
     },
     "require-dev": {
-        "carthage-software/mago": "^1.28",
-        "phpstan/phpstan": "^2.1",
+        "carthage-software/mago": "^1.30",
+        "phpstan/phpstan": "^2.2",
         "shlinkio/shlink-mago-config": "^1.0"
     },
     "autoload": {
@@ -37,10 +37,7 @@
         }
     },
     "scripts": {
-        "ci": [
-            "@cs",
-            "@stan"
-        ],
+        "ci": ["@cs", "@stan"],
         "lint": "mago lint",
         "lint:fix": "mago lint --fix",
         "format": "mago format",
