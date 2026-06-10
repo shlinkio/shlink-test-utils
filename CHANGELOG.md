@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [4.6.0] - 2026-06-10
 ### Added
-* *Nothing*
+* Update to `phpunit/php-code-coverage` 14.0
 
 ### Changed
 * Migrate form PHP_CodeSniffer to Mago for code linting and formatting.
@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * *Nothing*
 
 ### Removed
-* *Nothing*
+* Drop support for `phpunit/php-code-coverage` 12.0 and 13.0
 
 ### Fixed
 * *Nothing*

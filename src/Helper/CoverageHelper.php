@@ -9,7 +9,7 @@ use ReflectionMethod;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Driver\Selector;
 use SebastianBergmann\CodeCoverage\Filter;
-use SebastianBergmann\CodeCoverage\Report\PHP;
+use SebastianBergmann\CodeCoverage\Serialization\Serializer;
 use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 
 use function debug_backtrace;
@@ -65,13 +65,13 @@ class CoverageHelper
             }
         }
 
-        $coverage = new CodeCoverage(new Selector()->forLineCoverage($filter), $filter);
+        $coverage = new CodeCoverage(new Selector()->select($filter), $filter);
 
         if ($shutdownExportBasePath !== null) {
             register_shutdown_function(static function () use ($shutdownExportBasePath, $coverage): void {
                 $id = (string) microtime(as_float: true);
                 $covPath = $shutdownExportBasePath . '/' . $id . '.cov';
-                new PHP()->process($coverage, $covPath);
+                new Serializer()->serialize($covPath, $coverage);
             });
         }
 
