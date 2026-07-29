@@ -91,6 +91,7 @@ abstract class ApiTestCase extends SeededTestCase implements StatusCodeInterface
 
     private function optionsWithHeader(array $options, string $header, string $value): array
     {
+        /** @var array $headers */
         $headers = $options[RequestOptions::HEADERS] ?? [];
         $headers[$header] = $value;
         $options[RequestOptions::HEADERS] = $headers;

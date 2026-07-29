@@ -12,6 +12,12 @@ use Symfony\Component\Process\Process;
 
 class TestHelper
 {
+    /**
+     * @param string[] $createDbCommand
+     * @param string[] $migrateDbCommand
+     * @param string[] $dropSchemaCommand
+     * @param string[] $runSqlCommand
+     */
     public function createTestDb(
         array $createDbCommand = ['vendor/bin/doctrine', 'orm:schema-tool:create'],
         array $migrateDbCommand = ['vendor/bin/doctrine-migrations', 'migrations:migrate'],
@@ -34,6 +40,7 @@ class TestHelper
 
     public function seedFixtures(EntityManagerInterface $em, array $config): void
     {
+        /** @var list<string> $paths */
         $paths = $config['paths'] ?? [];
         if (empty($paths)) {
             return;
@@ -48,6 +55,10 @@ class TestHelper
         $executor->execute($loader->getFixtures());
     }
 
+    /**
+     * @param string[] $command
+     * @return string[]
+     */
     private function withFlags(array $command): array
     {
         return [...$command, '--no-interaction', '-q'];

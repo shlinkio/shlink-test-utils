@@ -37,7 +37,7 @@ class CoverageHelper
             $attributes = $ref->getAttributes();
             foreach ($attributes as $attr) {
                 if ($attr->getName() === Test::class) {
-                    return '::' . $t['function'];
+                    return '::' . (string) $t['function'];
                 }
             }
         }
