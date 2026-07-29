@@ -28,8 +28,7 @@
     },
     "require-dev": {
         "carthage-software/mago": "^1.30",
-        "phpstan/phpstan": "^2.2",
-        "shlinkio/shlink-mago-config": "^1.0"
+        "shlinkio/shlink-mago-config": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -37,20 +36,21 @@
         }
     },
     "scripts": {
-        "ci": ["@cs", "@stan"],
+        "ci": ["@cs", "@analyze"],
         "lint": "mago lint",
         "lint:fix": "mago lint --fix",
         "format": "mago format",
         "format:check": "mago format --check",
         "cs": ["@lint", "@format:check"],
         "cs:fix": ["@lint:fix", "@format"],
-        "stan": "phpstan analyse"
+        "analyze": "mago analyze",
+        "stan": "@analyze"
     },
     "scripts-descriptions": {
-        "ci": "<fg=blue;options=bold>Alias for \"cs\" and \"stan\"</>",
+        "ci": "<fg=blue;options=bold>Alias for \"cs\" and \"analyze\"</>",
         "cs": "<fg=blue;options=bold>Checks coding styles</>",
         "cs:fix": "<fg=blue;options=bold>Fixes coding styles, when possible</>",
-        "stan": "<fg=blue;options=bold>Inspects code with phpstan</>"
+        "analyze": "<fg=blue;options=bold>Inspects code with mago analyze</>"
     },
     "config": {
         "sort-packages": true,

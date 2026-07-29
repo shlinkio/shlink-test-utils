@@ -8,10 +8,17 @@ extends = "vendor/shlinkio/shlink-mago-config/mago.toml"
 [source]
 workspace = "."
 paths = ["src"]
-excludes = ["vendor"]
+includes = ["vendor"]
 
 [source.glob]
 literal-separator = true
 
 [linter.rules]
 no-literal-password = { exclude = ["src/ApiTest/ApiTestCase.php"] }
+
+[analyzer]
+ignore = [
+    "mixed-assignment",
+    "mixed-argument",
+]
+

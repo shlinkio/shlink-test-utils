@@ -18,6 +18,7 @@ abstract class CliTestCase extends SeededTestCase
     private const SHLINK_CLI_ENTRY_POINT = 'bin/cli';
 
     /**
+     * @param string[] $command
      * @param string[] $inputs
      * @return array{string, int|null}
      */
