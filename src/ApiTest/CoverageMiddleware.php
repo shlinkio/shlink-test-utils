@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\TestUtils\ApiTest;
 
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -19,6 +20,7 @@ class CoverageMiddleware implements MiddlewareInterface
 
     public function __construct(private readonly CodeCoverage|null $coverage) {}
 
+    #[Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $coverageId = $request->getHeaderLine(self::COVERAGE_ID_HEADER);

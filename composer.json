@@ -27,7 +27,7 @@
         "symfony/process": "^8.0"
     },
     "require-dev": {
-        "carthage-software/mago": "^1.30",
+        "carthage-software/mago": "~1.61.0",
         "shlinkio/shlink-mago-config": "^1.1"
     },
     "autoload": {
